@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+resources:
+ repositories:
+   - repository: holodeck-worlds
+     type: github
+     endpoint: BYU-PCCL
+     name: BYU-PCCL/holodeck-worlds
+
+trigger:
+- develop
+
+steps:
+- script: |
+    chmod 777 .
+    su ue4 Build/ContinuousIntegration/build_project.sh
+  displayName: Build editor
+- script: |
+    git clone
